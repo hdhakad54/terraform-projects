@@ -21,9 +21,9 @@ terraform-ha-web-app.
 Step 2: Initialize Terraform Project
 1. Inside the project folder, create a file named 'main.tf' and add the AWS
 provider configuration:
-provider "aws" {
+<provider "aws" {
  region = "us-east-1"
-}
+}>
 2. Run the following command to initialize Terraform and download the
 AWS provider plugin:
 terraform init
