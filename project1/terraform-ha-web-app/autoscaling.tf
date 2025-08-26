@@ -9,7 +9,10 @@ resource "aws_launch_template" "web" {
  }
 }
 resource "aws_autoscaling_group" "web" {
- launch_configuration = aws_launch_template.web.id
+   launch_template {
+    id      = aws_launch_template.web.id
+    version = "$Latest"
+  }
  min_size = 1
  max_size = 3
  desired_capacity = 2
