@@ -77,6 +77,7 @@ Project 4: Automate the Deployment of a Complete CI/CD Pipeline on AWS
 
 2. Implementation Steps
 
+
 o Set Up Terraform
 
 o Create an S3 Bucket for Hosting
