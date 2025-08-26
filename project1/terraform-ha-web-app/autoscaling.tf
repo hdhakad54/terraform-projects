@@ -2,7 +2,7 @@ resource "aws_launch_configuration" "web" {
  name = "web-lc"
  image_id = "ami-00ca32bbc84273381"
  instance_type = "t2.micro"
- key_name = "abc.pem"
+ key_name = "abc"
 
  lifecycle {
  create_before_destroy = true
