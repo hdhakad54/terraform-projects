@@ -1,4 +1,4 @@
-resource "aws_launch_configuration" "web" {
+resource "aws_launch_template" "web" {
  name = "web-lc"
  image_id = "ami-00ca32bbc84273381"
  instance_type = "t2.micro"
@@ -9,7 +9,7 @@ resource "aws_launch_configuration" "web" {
  }
 }
 resource "aws_autoscaling_group" "web" {
- launch_configuration = aws_launch_configuration.web.id
+ launch_configuration = aws_launch_template.web.id
  min_size = 1
  max_size = 3
  desired_capacity = 2
