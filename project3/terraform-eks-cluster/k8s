@@ -1,0 +1,44 @@
+Configure kubectl
+1. Update your kubeconfig file to connect to the EKS cluster:
+aws eks --region us-east-1 update-kubeconfig --name eks-cluster
+2. Verify the cluster connection:
+kubectl get nodes
+Deploy a Sample Application
+1. Create a deployment YAML file, e.g., app-deployment.yaml:
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: nginx-deployment
+spec:
+ replicas: 2
+ selector:
+ matchLabels:
+ app: nginx
+ template:
+ metadata:
+ labels:
+ app: nginx
+ spec:
+ containers:
+ - name: nginx
+ image: nginx:latest
+ports:
+ - containerPort: 80
+2. Apply the deployment:
+kubectl apply -f app-deployment.yaml
+3. Expose the application using a service:
+apiVersion: v1
+kind: Service
+metadata:
+ name: nginx-service
+spec:
+ selector:
+ app: nginx
+ ports:
+ - protocol: TCP
+ port: 80
+ targetPort: 80
+ type: LoadBalancer
+4. Apply the service:
+kubectl apply -f service.yaml
+5. Access the application via the Load Balancer URL.
